@@ -46,7 +46,7 @@ class DetailsViewModel: DetailsViewModelProtocol {
     }
     
     func calculateActualPrize(completion: @escaping(Double) -> Void) {
-        getItemDetails { (message, statuscode, itemdetails) in
+        getItemDetails { (_, _, itemdetails) in
             if let actualDiscount = itemdetails?.actualDiscount, let originalPrice = self.searchResult.price {
                 let actualPrize = originalPrice * ((100 - actualDiscount) / 100)
                 completion(actualPrize)
@@ -58,7 +58,7 @@ class DetailsViewModel: DetailsViewModelProtocol {
         guard let id = searchResult.id else {
             return
         }
-        networkManager.fetchItemDetails(id: id) { (message, statuscode, itemDetails) in
+        networkManager.fetchItemDetails(id: id) { (_, statuscode, itemDetails) in
             if statuscode == 200 {
                 if let itemDetails = itemDetails {
 //                    self.itemDetails = itemDetails

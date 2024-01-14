@@ -22,7 +22,7 @@ class SearchViewModel: SearchViewModelProtocol {
     }
     
     func fetchSearchResults(completion: @escaping viewControllerHandler) {
-        networkManager.fetchSearchResults(searchText: "") { (message, statuscode, results) in
+        networkManager.fetchSearchResults(searchText: "") { (_, _, results) in
             if let results = results {
                 self.searchResults = results
                 completion(true, "Data fetched successfully")

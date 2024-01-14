@@ -107,7 +107,7 @@ extension SearchViewController: UITableViewDelegate {
 // MARK: - API Requests
 extension SearchViewController {
     private func fetchSearchResults() {
-        viewModel.fetchSearchResults { (success, message) in
+        viewModel.fetchSearchResults { (success, _) in
             if success {
                 self.searchTableView.reloadData()
             }

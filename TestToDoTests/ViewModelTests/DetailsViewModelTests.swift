@@ -30,14 +30,14 @@ final class DetailsViewModelTests: XCTestCase {
     func testfetchItemDetailsSuccess() {
         XCTAssertNotNil(searchResults.id)
         
-        sut.networkManager.fetchItemDetails(id: searchResults.id) { (message, statuscode, itemDetails) in
+        sut.networkManager.fetchItemDetails(id: searchResults.id) { (_, statuscode, itemDetails) in
             XCTAssertNotNil(itemDetails)
             XCTAssertEqual(statuscode, 200)
         }
     }
     
     func testcalculateActualPrize() {
-        sut.networkManager.fetchItemDetails(id: searchResults.id) { (message, statuscode, itemDetails) in
+        sut.networkManager.fetchItemDetails(id: searchResults.id) { (_, _, itemDetails) in
             XCTAssertNotNil(itemDetails)
             XCTAssertNotNil(itemDetails?.actualDiscount)
             XCTAssertEqual(itemDetails?.actualDiscount, 7.5)

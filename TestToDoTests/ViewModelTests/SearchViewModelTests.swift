@@ -25,7 +25,7 @@ final class SearchViewModelTests: XCTestCase {
     }
     
     func testSeachResultApiSuccess() {
-        sut.networkManager.fetchSearchResults(searchText: "") { (message, statuscode, result) in
+        sut.networkManager.fetchSearchResults(searchText: "") { (_, statuscode, result) in
             XCTAssertEqual(statuscode, 200)
             XCTAssertNotNil(result)
         }
